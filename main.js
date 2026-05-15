@@ -4,112 +4,90 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ---------------- SCENE ---------------- */
+/* SCENE */
 const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0x000000, 2, 8);
+scene.fog = new THREE.Fog(0x000000, 3, 10);
 
-/* ---------------- CAMERA ---------------- */
+/* CAMERA */
 const camera = new THREE.PerspectiveCamera(
   60,
   window.innerWidth / window.innerHeight,
   0.1,
   100
 );
-
 camera.position.z = 4;
 
-/* ---------------- RENDERER ---------------- */
+/* RENDERER */
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#webgl"),
   alpha: true,
-  antialias: true,
+  antialias: true
 });
 
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-/* ---------------- LIGHTING ---------------- */
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(2, 2, 5);
+/* LIGHT */
+const light = new THREE.AmbientLight(0xffffff, 1);
 scene.add(light);
 
-const ambient = new THREE.AmbientLight(0x404040, 2);
-scene.add(ambient);
-
-/* ---------------- TEXTURE LOADER ---------------- */
+/* TEXTURES (SAFE LOAD) */
 const loader = new THREE.TextureLoader();
 
-/* Fallback colors so NOTHING ever breaks */
-const fallback = new THREE.MeshBasicMaterial({ color: 0x222222 });
+const t1 = loader.load("/image1.jpg", undefined, undefined, () => {});
+const t2 = loader.load("/image2.jpg", undefined, undefined, () => {});
+const t3 = loader.load("/image3.jpg", undefined, undefined, () => {});
 
-const tex1 = loader.load("/image1.jpg", undefined, undefined, () => {});
-const tex2 = loader.load("/image2.jpg", undefined, undefined, () => {});
-const tex3 = loader.load("/image3.jpg", undefined, undefined, () => {});
-
-/* ---------------- LAYERS ---------------- */
+/* GEOMETRY */
 const geo = new THREE.PlaneGeometry(2.2, 3.2);
 
-const mat1 = new THREE.MeshBasicMaterial({ map: tex1 || fallback.map });
-const mat2 = new THREE.MeshBasicMaterial({ map: tex2 || fallback.map });
-const mat3 = new THREE.MeshBasicMaterial({ map: tex3 || fallback.map });
+/* MATERIALS */
+const m1 = new THREE.MeshBasicMaterial({ map: t1 });
+const m2 = new THREE.MeshBasicMaterial({ map: t2 });
+const m3 = new THREE.MeshBasicMaterial({ map: t3 });
 
-const layer1 = new THREE.Mesh(geo, mat1);
-const layer2 = new THREE.Mesh(geo, mat2);
-const layer3 = new THREE.Mesh(geo, mat3);
+/* LAYERS */
+const l1 = new THREE.Mesh(geo, m1);
+const l2 = new THREE.Mesh(geo, m2);
+const l3 = new THREE.Mesh(geo, m3);
 
-layer1.position.z = 0;
-layer2.position.z = -1.5;
-layer3.position.z = -3;
+l1.position.z = 0;
+l2.position.z = -1.5;
+l3.position.z = -3;
 
-scene.add(layer1, layer2, layer3);
+scene.add(l1, l2, l3);
 
-/* ---------------- SCROLL SYSTEM ---------------- */
+/* SCROLL SYSTEM (CONTROLLED) */
 gsap.to(camera.position, {
   z: 2,
   scrollTrigger: {
     trigger: "body",
     start: "top top",
     end: "bottom bottom",
-    scrub: true,
-  },
+    scrub: true
+  }
 });
 
-gsap.to(layer2.position, {
-  z: -0.5,
-  scrollTrigger: {
-    trigger: "body",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: true,
-  },
-});
-
-gsap.to(layer3.position, {
-  z: -1,
-  scrollTrigger: {
-    trigger: "body",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: true,
-  },
-});
-
-/* ---------------- ANIMATE ---------------- */
+/* LOOP */
 function animate() {
   requestAnimationFrame(animate);
 
-  layer1.rotation.y += 0.002;
-  layer2.rotation.y += 0.001;
-  layer3.rotation.y += 0.0015;
+  l1.rotation.y += 0.001;
+  l2.rotation.y += 0.001;
+  l3.rotation.y += 0.001;
 
   renderer.render(scene, camera);
 }
 
 animate();
 
-/* ---------------- RESIZE ---------------- */
+/* RESIZE */
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+/* MODE TOGGLE */
+document.getElementById("modeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("desktop");
 });
