@@ -1,13 +1,14 @@
 body {
   margin: 0;
-  overflow: hidden;
   background: #050505;
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
   color: white;
+  height: 300vh;
 }
 
 /* CANVAS */
-#webgl {
+#scene {
   position: fixed;
   top: 0;
   left: 0;
@@ -25,44 +26,36 @@ body {
   pointer-events: none;
 }
 
-/* TOP BAR */
+/* TOP */
 .topbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  pointer-events: auto;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  pointer-events: none;
 }
 
 .brand {
-  color: gold;
   font-weight: 600;
   letter-spacing: 2px;
+  color: #d4af37;
 }
 
-#modeToggle {
-  background: transparent;
-  border: 1px solid gold;
-  color: white;
-  padding: 6px 10px;
-}
-
-/* HERO TEXT */
-.heroText {
+/* HERO */
+.hero {
   position: absolute;
   top: 40%;
   width: 100%;
   text-align: center;
-  pointer-events: none;
 }
 
-.heroText h1 {
-  font-size: 28px;
+.hero h1 {
+  font-size: 22px;
   margin: 0;
 }
 
-.heroText p {
-  font-size: 14px;
-  opacity: 0.7;
+.hero p {
+  opacity: 0.6;
+  font-size: 13px;
 }
 
 /* CTA */
@@ -92,9 +85,4 @@ body {
   margin: 0 10px;
   color: white;
   text-decoration: none;
-}
-
-/* DESKTOP MODE */
-.desktop .heroText h1 {
-  font-size: 42px;
 }
