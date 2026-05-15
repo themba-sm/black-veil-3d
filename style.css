@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #0a0a0a;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+#webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#ui {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  pointer-events: none;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  pointer-events: auto;
+}
+
+.brand {
+  color: gold;
+  font-weight: bold;
+}
+
+#toggle {
+  background: black;
+  color: white;
+  border: 1px solid gold;
+  padding: 8px;
+}
+
+.cta {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.whatsapp {
+  background: #25D366;
+  padding: 12px 20px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.footer a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.desktop-mode .cta {
+  top: 80px;
+}
+
+.desktop-mode .brand {
+  font-size: 24px;
+}
