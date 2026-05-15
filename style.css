@@ -1,26 +1,31 @@
 body {
   margin: 0;
   overflow: hidden;
-  background: #0a0a0a;
+  background: #050505;
   font-family: Arial, sans-serif;
   color: white;
 }
 
+/* CANVAS */
 #webgl {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
 }
 
-#ui {
+/* UI ALWAYS ABOVE */
+.ui {
   position: fixed;
   z-index: 10;
   width: 100%;
+  height: 100%;
   pointer-events: none;
 }
 
+/* TOP BAR */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -30,32 +35,51 @@ body {
 
 .brand {
   color: gold;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
-#toggle {
-  background: black;
-  color: white;
+#modeToggle {
+  background: transparent;
   border: 1px solid gold;
-  padding: 8px;
+  color: white;
+  padding: 6px 10px;
 }
 
+/* HERO TEXT */
+.heroText {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.heroText h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.heroText p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* CTA */
 .cta {
   position: absolute;
-  top: 50px;
+  bottom: 90px;
   width: 100%;
   text-align: center;
   pointer-events: auto;
-}
-
-.whatsapp {
   background: #25D366;
-  padding: 12px 20px;
   color: black;
-  text-decoration: none;
+  padding: 14px;
   font-weight: bold;
+  text-decoration: none;
 }
 
+/* FOOTER */
 .footer {
   position: absolute;
   bottom: 20px;
@@ -70,10 +94,7 @@ body {
   text-decoration: none;
 }
 
-.desktop-mode .cta {
-  top: 80px;
-}
-
-.desktop-mode .brand {
-  font-size: 24px;
+/* DESKTOP MODE */
+.desktop .heroText h1 {
+  font-size: 42px;
 }
