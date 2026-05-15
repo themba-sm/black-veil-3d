@@ -2,33 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Black Vale Automation</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css"/>
 </head>
-<body class="mobile-mode">
 
-<div id="ui">
+<body>
+
+<!-- UI LAYER (NEVER GETS HIDDEN) -->
+<div class="ui">
+
   <div class="topbar">
     <div class="brand">BLACK VALE AUTOMATION</div>
-    <button id="toggle">DESKTOP MODE</button>
+    <button id="modeToggle">DESKTOP</button>
   </div>
 
-  <div class="cta">
-    <a class="whatsapp" href="https://wa.me/27670091136?text=Hi%20Sinethemba%2C%20I%20want%20to%20connect%20regarding%20Black%20Vale%20Automation" target="_blank">
-      START WHATSAPP
-    </a>
+  <div class="heroText">
+    <h1>Build. Scale. Dominate.</h1>
+    <p>Luxury automation systems engineered for speed and authority.</p>
   </div>
+
+  <a class="cta" href="https://wa.me/27670091136?text=Hi%2C%20I%20want%20to%20connect%20regarding%20Black%20Vale%20Automation.%20I%E2%80%99m%20ready%20to%20take%20the%20next%20step%20%E2%80%94%20what%20do%20I%20need%20to%20do%3F" target="_blank">
+    START WHATSAPP
+  </a>
 
   <div class="footer">
-    <a href="mailto: mtshalis001@proton.me?subject=Black%20Vale%20Inquiry">EMAIL</a>
-    <a href="https://www.instagram.com/themba_sm?igsh=Z3FvaGY4YmlwNjAx">INSTAGRAM</a>
-    <a href="https://www.tiktok.com/@themba_sm?_r=1&_t=ZS-96O4mFINh3Z">TIKTOK</a>
+    <a href="mailto: mtshalis001@proton.me">Email</a>
+    <a href="‎https://www.instagram.com/themba_sm?igsh=Z3FvaGY4YmlwNjAx">Instagram</a>
+    <a href="https://www.tiktok.com/@themba_sm?_r=1&_t=ZS-96O8tBUmqxs">TikTok</a>
   </div>
+
 </div>
 
+<!-- 3D CANVAS -->
 <canvas id="webgl"></canvas>
 
 <script type="module" src="/main.js"></script>
+
 </body>
 </html>
